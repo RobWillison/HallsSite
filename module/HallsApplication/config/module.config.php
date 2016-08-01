@@ -4,7 +4,6 @@ namespace HallsApplication;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -19,11 +18,33 @@ return [
                     ],
                 ],
             ],
+            'hallsPage' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/halls/:id',
+                    'constraints' => array(
+                        'id' => '\d+',
+                    ),
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'getHall',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\IndexController::class => Factory\Controller\IndexControllerFactory::class,
+            Controller\HallsController::class => Factory\Controller\HallsControllerFactory::class
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            Table\HallsTable::class => Factory\Table\HallsTableFactory::class,
+            Table\HallsImageTable::class => Factory\Table\HallsImageTableFactory::class,
+            Table\UniversityTable::class => Factory\Table\UniversiryTableFactory::class,
+            Service\HallsService::class => Factory\Service\HallsServiceFactory::class,
         ],
     ],
     'view_manager' => [
@@ -34,7 +55,8 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'halls-application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'index' => __DIR__ . '/../view/application/index.phtml',
+            'hallsProfile' => __DIR__ . '/../view/application/hallsProfile.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],

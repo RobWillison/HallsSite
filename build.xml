@@ -1,0 +1,13 @@
+
+<project name="HallsApplication" default="build">
+
+    <!-- ============================================  -->
+    <!-- Target: build                                 -->
+    <!-- ============================================  -->
+    <target name="build">
+        <echo msg="Building config files" />
+
+        <copy file="config/autoload/local.php.dist" tofile="config/autoload/local.php" />
+    </target>
+
+</project>

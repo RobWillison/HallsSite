@@ -35,3 +35,16 @@ body {
     height: 70vh;
     width: 100vw;
 }
+
+.hallProfile {
+    text-align: center;
+}
+
+.hallCarossel {
+    height: 40vh;
+    width: 60vw;
+}
+
+.hallImage {
+    margin: auto;
+}
