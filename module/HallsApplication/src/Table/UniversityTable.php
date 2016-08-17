@@ -25,6 +25,24 @@ class UniversityTable
         $this->hydrator = $hydrator;
     }
 
+    public function fetchAll()
+    {
+        $resultSet = $this->tableGateway->select();
+
+        $data = [];
+
+        while ($resultSet->valid()) {
+
+            $currentArray = $resultSet->current();
+
+            $data[] = $this->hydrator->hydrate($currentArray->getArrayCopy(), new UniversityEntity());
+
+            $resultSet->next();
+        }
+
+        return $data;
+    }
+
     public function fetch($id)
     {
         $where = new Where();

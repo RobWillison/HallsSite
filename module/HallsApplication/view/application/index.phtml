@@ -1,8 +1,10 @@
 
-<div id="map" data-halls='<?= $this->hallsJson; ?>'></div>
+<div id="app">
+    <map id="map" :markers="halls"></map>
 
+    <?= $this->inlineScript()
+        ->prependFile($this->basePath('js/app/indexPage.js'))
+    ?>
 
+</div>
 
-<script src="js/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbvK8BomzmCBb7J0w6kEd2u3qDGbEj74A&callback=initMap"
-        async defer></script>

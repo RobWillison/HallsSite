@@ -15,12 +15,15 @@
                         ->prependStylesheet($this->basePath('css/style.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+                        ->prependStylesheet($this->basePath('css/font-awesome.min.css'))
         ?>
 
         <!-- Scripts -->
         <?= $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery-2.2.4.min.js'))
+            ->prependFile($this->basePath('js/vendor/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/app/bootstrap-waitingfor.js'))
+            ->prependFile($this->basePath('js/vendor/jquery-2.2.4.min.js'))
+            ->prependFile($this->basePath('js/vendor/vue.min.js'))
         ?>
     </head>
     <body>
@@ -31,11 +34,13 @@
                         <span class="icon-bar">
                         </span>
                     </button>
-                    <a class="navbar-brand" href="/">Home</a>
+                    <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+                    <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <a class="navbar-brand" href="/add"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
                 </div>
             </div>
         </nav>
             <?= $this->content; ?>
-        <?= $this->inlineScript() ?>
     </body>
+
 </html>

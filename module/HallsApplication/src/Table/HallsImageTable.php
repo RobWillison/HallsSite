@@ -34,4 +34,12 @@ class HallsImageTable
 
         return $images;
     }
+
+    public function insert(array $row) {
+        $result = $this->tableGateway->insert($row);
+
+        return $result;
+
+    }
+
 }

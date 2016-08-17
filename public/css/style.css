@@ -47,4 +47,79 @@ body {
 
 .hallImage {
     margin: auto;
+    height: inherit !important;
+}
+
+.addHallsForm {
+
+}
+
+.hall-profile-address {
+    font-size: 2vw;
+}
+
+.hall-profile-uni {
+    font-size: 2vw;
+}
+
+.review-title {
+    text-align: center;
+    font-size: 2vw;
+}
+
+.star-backer {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.star-image {
+    width: 100%;
+    height: auto;
+}
+
+.rating-text {
+    text-align: right;
+    font-size: 2vw;
+    padding-top: 0.5vw;
+}
+
+.reviews {
+    text-align: left;
+    font-size: 1.5vw;
+}
+
+.review {
+    text-align: left;
+    border: solid ;
+    border-width: 2px;
+    padding: 8px;
+}
+
+.reviewer {
+    font-size: 1.5vw;
+}
+
+.review-text {
+    font-size: 1vw;
+}
+
+.location-text {
+    font-size: 1vw;
+}
+
+.upload-file-thumbnail {
+    height: 5vw;
+    width: auto;
+
+}
+
+.upload-carossel {
+    height: 20vh;
+}
+
+.image-remove {
+    border: none;
+    background: none;
+    color: red;
+    font-size: 21px;
 }

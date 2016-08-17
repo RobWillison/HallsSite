@@ -8,17 +8,20 @@ use Zend\Router\Http\Segment;
 return [
     'router' => [
         'routes' => [
-            'home' => [
-                'type' => Literal::class,
+            'homePage' => [
+                'type' => Segment::class,
                 'options' => [
                     'route'    => '/',
+                    'constraints' => array(
+                        'id' => '\d+',
+                    ),
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'controller' => Controller\PageController::class,
+                        'action'     => 'getHomePage',
                     ],
                 ],
             ],
-            'hallsPage' => [
+            'hallProfile' => [
                 'type' => Segment::class,
                 'options' => [
                     'route'    => '/halls/:id',
@@ -26,16 +29,93 @@ return [
                         'id' => '\d+',
                     ),
                     'defaults' => [
-                        'controller' => Controller\HallsController::class,
-                        'action'     => 'getHall',
+                        'controller' => Controller\PageController::class,
+                        'action'     => 'getHallProfilePage',
                     ],
                 ],
             ],
+            'addHallReview' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/halls/:id/review',
+                    'constraints' => array(
+                        'id' => '\d+',
+                    ),
+                    'defaults' => [
+                        'controller' => Controller\PageController::class,
+                        'action'     => 'addReviewForHall',
+                    ],
+                ],
+            ],
+            'addNewHall' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/add',
+                    'defaults' => [
+                        'controller' => Controller\PageController::class,
+                        'action'     => 'addNewHall',
+                    ],
+                ],
+            ],
+
+
+            'getHalls' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/api/halls',
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'getHalls',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'specificId' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/:id',
+                            'constraints' => array(
+                                'id' => '\d+',
+                            ),
+                            'defaults' => [
+                                'action'     => 'getHall',
+                            ],
+                        ],
+                    ]
+                ]
+            ],
+            'getUniversities' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/api/universities[/:id]',
+                    'constraints' => array(
+                        'id' => '\d+',
+                    ),
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'getUniversities',
+                    ],
+                ],
+            ],
+            'addReivew' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/api/halls/:id/review',
+                    'constraints' => array(
+                        'id' => '\d+',
+                    ),
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'postReview',
+                    ],
+                ],
+            ]
+            
         ],
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => Factory\Controller\IndexControllerFactory::class,
+            Controller\PageController::class => Factory\Controller\PageControllerFactory::class,
             Controller\HallsController::class => Factory\Controller\HallsControllerFactory::class
         ],
     ],
@@ -44,7 +124,10 @@ return [
             Table\HallsTable::class => Factory\Table\HallsTableFactory::class,
             Table\HallsImageTable::class => Factory\Table\HallsImageTableFactory::class,
             Table\UniversityTable::class => Factory\Table\UniversiryTableFactory::class,
+            Table\ReviewTable::class => Factory\Table\ReviewTableFactory::class,
             Service\HallsService::class => Factory\Service\HallsServiceFactory::class,
+            Service\UniversityService::class => Factory\Service\UniversityServiceFactory::class,
+            Service\ImageService::class => Factory\Service\ImageServiceFactory::class,
         ],
     ],
     'view_manager' => [
@@ -56,12 +139,17 @@ return [
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'index' => __DIR__ . '/../view/application/index.phtml',
-            'hallsProfile' => __DIR__ . '/../view/application/hallsProfile.phtml',
+            'hallProfile' => __DIR__ . '/../view/application/hallProfile.phtml',
+            'addReview' => __DIR__ . '/../view/application/addReview.phtml',
+            'addHall' => __DIR__ . '/../view/application/addHalls.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
         ],
+        'strategies' => array(
+            'ViewJsonStrategy',
+        ),
     ],
 ];

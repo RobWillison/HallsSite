@@ -4,6 +4,7 @@ namespace HallsApplication\Table;
 
 use HallsApplication\Entity\HallEntity;
 use HallsApplication\Hydrator\HallDataHydrator;
+use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Where;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Hydrator\ClassMethods;
@@ -48,3 +49,4 @@ class HallsTable {
         return $this->hydrator->hydrate($currentArray->getArrayCopy(), new HallEntity());
     }
 }
+
