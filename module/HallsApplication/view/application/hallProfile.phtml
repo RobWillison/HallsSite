@@ -3,35 +3,36 @@
 
     <h1>{{ hall.hall_name }}</h1>
 
+    <div class="row">
+        <div id="myCarousel" class="col-xs-8 col-xs-offset-2 hallCarousel carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li v-for="image in hall.images" v-bind:class="{ 'active': $index == 0}" data-target="#myCarousel" data-slide-to="{{ $index }}"></li>
 
-    <div id="myCarousel" class="hallCarousel carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li v-for="image in hall.images" v-bind:class="{ 'active': $index == 0}" data-target="#myCarousel" data-slide-to="{{ $index }}"></li>
+            </ol>
 
-        </ol>
+            <!-- Wrapper for slides -->
+            <div class="hallImage carousel-inner" role="listbox">
 
-        <!-- Wrapper for slides -->
-        <div class="hallImage carousel-inner" role="listbox">
+                <div v-for="image in hall.images" v-bind:class="{ 'active': $index == 0}" class="hallImage item">
+                    <img src="/img/hallsImages/{{ image }}" class="hallImage">
+                </div>
 
-            <div v-for="image in hall.images" v-bind:class="{ 'active': $index == 0}" class="hallImage item">
-                <img src="/img/hallsImages/{{ image }}" class="hallImage">
             </div>
 
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
 
-    <div>
+    <div class="row">
         <div class="hall-profile-address">
             {{ hall.address_first_line }}, {{ hall.address_second_line }}, {{ hall.address_city }}, {{ hall.address_postcode }}
         </div>
