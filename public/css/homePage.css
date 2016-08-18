@@ -18,16 +18,15 @@ h2 {
 }
 
 .map-button {
-    background-color: #F14A46;
-    background-image: -moz-linear-gradient(top, #FA7168, #F14A46);
-    background-image: -ms-linear-gradient(top, #FA7168, #F14A46);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FA7168), to(#F14A46));
-    background-image: -webkit-linear-gradient(top, #FA7168, #F14A46);
-    background-image: -o-linear-gradient(top, #FA7168, #F14A46);
-    background-image: linear-gradient(top, #FA7168, #F14A46);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FA7168', endColorstr='#F14A46', GradientType=0);
-
+    background-image: -webkit-linear-gradient(top, #FA756C 0%, #5A756C 100%);
+    background-image:      -o-linear-gradient(top, #FA756C 0%, #F14A46 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FA756C), to(#F14A46));
+    background-image:         linear-gradient(to bottom, #FA756C 0%, #F14A46 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FA756C', endColorstr='#F14A46', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
     border-color: #F14A46;
+    color: white;
 }
 
 .map-button:hover,
@@ -35,4 +34,11 @@ h2 {
     background-color: #F14A46;
     background-position: 0 -15px;
     border-color: #F14A46;
+}
+
+.map-button:active,
+.map-button.active {
+    background-color: #F14A46;
+    border-color: #F14A46;
+    color: #F14A46;
 }
