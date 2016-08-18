@@ -13,6 +13,26 @@ h2 {
     text-align: center;
 }
 
-.map-button {
+.map-button-div {
     margin-top: 4vh;
+}
+
+.map-button {
+    background-color: #F14A46;
+    background-image: -moz-linear-gradient(top, #FA7168, #F14A46);
+    background-image: -ms-linear-gradient(top, #FA7168, #F14A46);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FA7168), to(#F14A46));
+    background-image: -webkit-linear-gradient(top, #FA7168, #F14A46);
+    background-image: -o-linear-gradient(top, #FA7168, #F14A46);
+    background-image: linear-gradient(top, #FA7168, #F14A46);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FA7168', endColorstr='#F14A46', GradientType=0);
+
+    border-color: #F14A46;
+}
+
+.map-button:hover,
+.map-button:focus {
+    background-color: #F14A46;
+    background-position: 0 -15px;
+    border-color: #F14A46;
 }
