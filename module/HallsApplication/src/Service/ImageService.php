@@ -10,6 +10,7 @@ namespace HallsApplication\Service;
 
 
 use HallsApplication\Table\HallsImageTable;
+use Ramsey\Uuid\Uuid;
 
 class ImageService
 {
@@ -32,7 +33,7 @@ class ImageService
 
         $data = base64_decode($img);
 
-        $fileName = uniqid() . '.' . $extension;
+        $fileName = Uuid::uuid1() . '.' . $extension;
 
         $failure = file_put_contents($directory . $fileName, $data);
         

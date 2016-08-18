@@ -11,6 +11,7 @@ namespace HallsApplication\Controller;
 use HallsApplication\Service\HallsService;
 use HallsApplication\Service\ImageService;
 use HallsApplication\Service\UniversityService;
+use Ramsey\Uuid\Uuid;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
 
@@ -74,5 +75,27 @@ class HallsController extends AbstractActionController
 
         return $view;
 
+    }
+
+    /**
+     * @return UniversityService
+     */
+    public function getUniversitiesAction()
+    {
+        $list = $this->universityService->getList();
+
+        $view = new JsonModel($list);
+
+        return $view;
+    }
+
+    public function addHallsAction()
+    {
+
+        $request = $this->getRequest();
+        $hallArray = $request->getPost()->toArray();
+        
+        $this->hallsService->addHall($hallArray);
+        
     }
 }

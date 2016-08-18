@@ -4,6 +4,7 @@ namespace HallsApplication\Factory\Service;
 
 use HallsApplication\Hydrator\HallHydrator;
 use HallsApplication\Service\HallsService;
+use HallsApplication\Service\ImageService;
 use HallsApplication\Table\HallsImageTable;
 use HallsApplication\Table\HallsTable;
 use HallsApplication\Table\ReviewTable;
@@ -21,7 +22,8 @@ class HallsServiceFactory implements FactoryInterface {
         $universityTable = $container->get(UniversityTable::class);
         $reviewTable = $container->get(ReviewTable::class);
         $hydrator = new HallHydrator();
+        $imageService = $container->get(ImageService::class);
 
-        return new HallsService($hallTable, $hallImageTable, $universityTable, $reviewTable, $hydrator);
+        return new HallsService($hallTable, $hallImageTable, $universityTable, $reviewTable, $hydrator, $imageService);
     }
 }

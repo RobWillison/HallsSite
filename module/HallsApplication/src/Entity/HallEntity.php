@@ -5,7 +5,7 @@ namespace HallsApplication\Entity;
 class HallEntity
 {
     private $id;
-    private $hallName;
+    private $name;
     private $universityId;
     private $longitude;
     private $latitude;
@@ -158,14 +158,14 @@ class HallEntity
         $this->id = $id;
     }
 
-    public function getHallName()
+    public function getName()
     {
-        return $this->hallName;
+        return $this->name;
     }
 
-    public function setHallName($hallName)
+    public function setName($name)
     {
-        $this->hallName = $hallName;
+        $this->name = $name;
     }
 
     public function getUniversityId()

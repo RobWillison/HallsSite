@@ -10,20 +10,20 @@ namespace HallsApplication\Service;
 
 
 use HallsApplication\Table\UniversityTable;
+use Zend\Hydrator\HydratorInterface;
 
 class UniversityService
 {
     private $universityTable;
+    private $hydrator;
 
-    public function __construct(UniversityTable $universityTable)
+    public function __construct(
+        UniversityTable $universityTable,
+        HydratorInterface $hydrator
+    )
     {
         $this->universityTable = $universityTable;
-    }
-
-    public function getAllUniversities() {
-        $universityEntities = $this->universityTable->fetchAll();
-
-        return $universityEntities;
+        $this->hydrator = $hydrator;
     }
     
     public function getList() {
@@ -32,7 +32,7 @@ class UniversityService
         $listOfUnis = [];
 
         foreach ($unis as $uni) {
-            $listOfUnis[] = ['id' => $uni->getId(), 'text' => $uni->getName()];
+            $listOfUnis[] = $this->hydrator->extract($uni);
         }
 
         return $listOfUnis;

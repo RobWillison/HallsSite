@@ -35,66 +35,6 @@ Vue.component('rating', {
 
 });
 
-Vue.component('fileupload', {
-    template: '#fileupload',
-
-    props: {
-        name: String,
-        filetypes: {
-            type: Array,
-            default: ['image/png', 'image/jpeg'],
-        },
-        errortext: String,
-        images: Array
-    },
-
-    data: function(){
-        return {
-            has_error: false,
-        };
-    },
-    
-    methods: {
-        onFileChange: function (e) {
-            var files = e.target.files || e.dataTransfer.files;
-            var file = files[0];
-
-            this.checkFileTypes(file);
-
-            if (this.has_error) {
-                return;
-            }
-
-            if (!files.length)
-                return;
-
-            this.addImage(file);
-        },
-        checkFileTypes: function (file) {
-            this.has_error = false;
-
-            if (this.filetypes.indexOf(file.type) == -1) {
-                this.has_error = true;
-            }
-        },
-        addImage: function(file) {
-            var reader = new FileReader();
-
-            var self = this;
-
-            reader.onload = function(e){
-                self.images.push(e.target.result);
-            };
-
-            reader.readAsDataURL(file);
-        },
-        removeImage: function (e) {
-            item = $(e.srcElement).data('item');
-            this.images.splice(item, 1);
-        }
-    }
-});
-
 var vue = new Vue({
 
     el:'#app',

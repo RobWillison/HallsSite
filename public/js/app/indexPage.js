@@ -86,13 +86,13 @@ Vue.component('map', {
                 this.markers.forEach(
                     function (item) {
                         var infowindow = new google.maps.InfoWindow({
-                            content: '<div><a href="/halls/' + item.id + '">' + item.hall_name + '</a></div>'
+                            content: '<div><a href="/halls/' + item.id + '">' + item.name + '</a></div>'
                         });
-
+                        console.log(item);
                         var marker = new google.maps.Marker({
                             position: {lat: item.latitude, lng: item.longitude},
                             map: map,
-                            title: item.halls_name
+                            title: item.name
                         });
 
                         marker.addListener('click', function() {

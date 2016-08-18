@@ -48,5 +48,20 @@ class HallsTable {
 
         return $this->hydrator->hydrate($currentArray->getArrayCopy(), new HallEntity());
     }
+
+    public function insert(HallEntity $hall)
+    {
+        $array = $this->hydrator->extract($hall);
+
+        $columns = ['id', 'name', 'university_id', 'longitude', 'latitude', 'address_first_line', 'address_second_line', 'address_city', 'address_postcode'];
+
+        foreach ($array as $itemName => $item) {
+            if (array_search($itemName, $columns) === false) {
+                unset($array[$itemName]);
+            }
+        }
+
+        $this->tableGateway->insert($array);
+    }
 }
 

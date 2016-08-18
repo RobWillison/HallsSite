@@ -2,11 +2,13 @@
 
 namespace HallsApplication\Service;
 
+use HallsApplication\Entity\HallEntity;
 use HallsApplication\Entity\ReviewEntity;
 use HallsApplication\Table\HallsImageTable;
 use HallsApplication\Table\HallsTable;
 use HallsApplication\Table\ReviewTable;
 use HallsApplication\Table\UniversityTable;
+use Ramsey\Uuid\Uuid;
 use Zend\Hydrator\HydratorInterface;
 
 class HallsService
@@ -16,6 +18,7 @@ class HallsService
     private $universityTable;
     private $reviewTable;
     private $hydrator;
+    private $imageService;
     
 
     public function __construct(
@@ -23,13 +26,15 @@ class HallsService
         HallsImageTable $hallImageTable,
         UniversityTable $universityTable,
         ReviewTable $reviewTable,
-        HydratorInterface $hydrator
+        HydratorInterface $hydrator,
+        ImageService $imageService
     ){
         $this->hallTable = $hallTable;
         $this->hallImageTable = $hallImageTable;
         $this->universityTable = $universityTable;
         $this->reviewTable = $reviewTable;
         $this->hydrator = $hydrator;
+        $this->imageService = $imageService;
         
     }
 
@@ -71,5 +76,21 @@ class HallsService
         $result = $this->reviewTable->insert($review);
 
         return $result;
+    }
+    
+    public function addHall(array $hallArray) {
+        $id = Uuid::uuid1();
+        
+        if (array_key_exists('uploadedImages', $hallArray)) {
+            foreach ($hallArray['uploadedImages'] as $image) {
+                $imageNames[] = $this->imageService->saveBase64Image($id, $image);
+            }
+            unset($hallArray['uploadedImages']);
+        }
+
+        $hall = $this->hydrator->hydrate($hallArray, new HallEntity());
+        $hall->setId($id);
+
+        $this->hallTable->insert($hall);
     }
 }

@@ -16,11 +16,14 @@
                         ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
                         ->prependStylesheet($this->basePath('css/font-awesome.min.css'))
+                        ->prependStylesheet($this->basePath('css/select2.min.css'))
         ?>
 
         <!-- Scripts -->
         <?= $this->headScript()
+            ->prependFile($this->basePath('js/app/imageUpload.js'))
             ->prependFile($this->basePath('js/vendor/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/vendor/select2.min.js'))
             ->prependFile($this->basePath('js/app/bootstrap-waitingfor.js'))
             ->prependFile($this->basePath('js/vendor/jquery-2.2.4.min.js'))
             ->prependFile($this->basePath('js/vendor/vue.min.js'))
@@ -41,6 +44,9 @@
             </div>
         </nav>
             <?= $this->content; ?>
+    
     </body>
 
+
 </html>
+

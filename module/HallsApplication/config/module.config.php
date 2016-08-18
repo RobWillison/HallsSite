@@ -12,9 +12,6 @@ return [
                 'type' => Segment::class,
                 'options' => [
                     'route'    => '/',
-                    'constraints' => array(
-                        'id' => '\d+',
-                    ),
                     'defaults' => [
                         'controller' => Controller\PageController::class,
                         'action'     => 'getHomePage',
@@ -26,7 +23,7 @@ return [
                 'options' => [
                     'route'    => '/halls/:id',
                     'constraints' => array(
-                        'id' => '\d+',
+                        'id' => '[a-zA-Z0-9-]*',
                     ),
                     'defaults' => [
                         'controller' => Controller\PageController::class,
@@ -39,7 +36,7 @@ return [
                 'options' => [
                     'route'    => '/halls/:id/review',
                     'constraints' => array(
-                        'id' => '\d+',
+                        'id' => '[a-zA-Z0-9-]*',
                     ),
                     'defaults' => [
                         'controller' => Controller\PageController::class,
@@ -75,7 +72,7 @@ return [
                         'options' => [
                             'route'    => '/:id',
                             'constraints' => array(
-                                'id' => '\d+',
+                                'id' => '[a-zA-Z0-9-]*',
                             ),
                             'defaults' => [
                                 'action'     => 'getHall',
@@ -102,11 +99,21 @@ return [
                 'options' => [
                     'route'    => '/api/halls/:id/review',
                     'constraints' => array(
-                        'id' => '\d+',
+                        'id' => '[a-zA-Z0-9-]*',
                     ),
                     'defaults' => [
                         'controller' => Controller\HallsController::class,
                         'action'     => 'postReview',
+                    ],
+                ],
+            ],
+            'addHalls' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/api/add',
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'addHalls',
                     ],
                 ],
             ]
