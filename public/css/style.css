@@ -54,16 +54,16 @@ body {
 }
 
 .hall-profile-address {
-    font-size: 2vw;
+    font-size: 40px;
 }
 
 .hall-profile-uni {
-    font-size: 2vw;
+    font-size: 30px;
 }
 
 .review-title {
     text-align: center;
-    font-size: 2vw;
+    font-size: 40px;
 }
 
 .star-backer {
@@ -84,7 +84,7 @@ body {
 
 .reviews {
     text-align: left;
-    font-size: 1.5vw;
+    font-size: 30px;
 }
 
 .review {
@@ -95,15 +95,15 @@ body {
 }
 
 .reviewer {
-    font-size: 1.5vw;
+    font-size: 30px;
 }
 
 .review-text {
-    font-size: 1vw;
+    font-size: 20px;
 }
 
 .location-text {
-    font-size: 1vw;
+    font-size: 18px;
 }
 
 .upload-file-thumbnail {
@@ -124,7 +124,7 @@ body {
 }
 
 .form-text {
-    font-size: 1.5vw;
+    font-size: 30px;
 }
 
 .university-drop-down {
