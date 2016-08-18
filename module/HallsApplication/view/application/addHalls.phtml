@@ -11,7 +11,7 @@
     <div v-if="invalidFields.length != 0" class="alert alert-danger" role="alert">This Form Has Errors</div>
     <div v-if="invalidFields.indexOf('images') != -1" class="alert alert-danger" role="alert">Please Add At Least One Image</div>
 
-    <div class="row">
+    <div class="row margin-bottom">
         <div v-bind:class="{ 'has-error': invalidFields.indexOf('selectedUni') != -1}" class="university-drop-down col-sm-4 col-sm-offset-4">
             <select v-select="selectedUni" class="has-error" id="university-drop-down">
                 <option value="-1">Select University</option>
@@ -20,13 +20,13 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row margin-bottom">
         <div v-bind:class="{ 'has-error': invalidFields.indexOf('name') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="name" type="text" class="textbox form-control" placeholder="Hall of Residence Name" aria-describedby="basic-addon1"/>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row margin-bottom">
         <div class="col-sm-8 col-sm-offset-1">
             <h3>
                 Plase drag the marker to the Halls location:
@@ -35,28 +35,28 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row margin-bottom">
         <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.firstLine') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.firstLine" type="text" class="textbox form-control" placeholder="Building Name" aria-describedby="basic-addon1"/>
         </div>
     </div>
-    <div class="row">
+    <div class="row margin-bottom">
         <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.secondLine') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.secondLine" type="text" class="textbox form-control" placeholder="Road" aria-describedby="basic-addon1"/>
         </div>
     </div>
-    <div class="row">
+    <div class="row margin-bottom">
         <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.city') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.city" type="text" class="textbox form-control" placeholder="City" aria-describedby="basic-addon1"/>
         </div>
     </div>
-    <div class="row">
+    <div class="row margin-bottom">
         <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.postcode') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.postcode" type="text" class="textbox form-control" placeholder="PostCode" aria-describedby="basic-addon1"/>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row margin-bottom">
         <fileupload :images.sync="uploadedimages" :name="'Add an Image'" :errortext="'File must be an Image'"></fileupload>
         <button @click.prevent="submitForm" type="button" class="col-sm-2 btn btn-success btn-lg">Submit</button>
     </div>
