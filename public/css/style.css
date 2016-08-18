@@ -78,7 +78,8 @@ body {
 
 .star-image {
     width: 100%;
-    height: auto;
+    height: inherit;
+
 }
 
 .rating-text {
