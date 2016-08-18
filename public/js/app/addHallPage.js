@@ -183,6 +183,7 @@ var vue = new Vue({
                 url: '/api/universities',
                 context: this,
                 success: function (data) {
+                    console.log(data);
                     this.universities = data;
                 }
             });

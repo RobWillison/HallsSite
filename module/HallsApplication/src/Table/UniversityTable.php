@@ -10,6 +10,7 @@ namespace HallsApplication\Table;
 
 
 use HallsApplication\Entity\UniversityEntity;
+use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Where;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Hydrator\ClassMethods;
@@ -27,7 +28,11 @@ class UniversityTable
 
     public function fetchAll()
     {
-        $resultSet = $this->tableGateway->select();
+        $select = new Select();
+        $select->from('universities');
+        $select->order('name ASC');
+
+        $resultSet = $this->tableGateway->selectWith($select);
 
         $data = [];
 
