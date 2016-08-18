@@ -58,8 +58,8 @@
     </div>
 
     <div class="row margin-bottom">
-        <fileupload :images.sync="uploadedimages" :name="'Add an Image'" :errortext="'File must be an Image'"></fileupload>
-        <button @click.prevent="submitForm" type="button" class="col-sm-2 btn btn-success btn-lg">Submit</button>
+        <fileupload class="button" :images.sync="uploadedimages" :name="'Add an Image'" :errortext="'File must be an Image'"></fileupload>
+        <button @click.prevent="submitForm" type="button" class="button col-sm-2 btn submit-button btn-lg">Submit</button>
     </div>
 </div>
 

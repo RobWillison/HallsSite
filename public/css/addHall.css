@@ -3,3 +3,34 @@
     height: 50vh;
     width: auto;
 }
+
+.submit-button {
+    background-image: -webkit-linear-gradient(top, #FA756C 0%, #5A756C 100%);
+    background-image:      -o-linear-gradient(top, #FA756C 0%, #F14A46 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FA756C), to(#F14A46));
+    background-image:         linear-gradient(to bottom, #FA756C 0%, #F14A46 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FA756C', endColorstr='#F14A46', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #F14A46;
+    color: white;
+}
+
+.submit-button:hover,
+.submit-button:focus {
+    background-color: #F14A46;
+    background-position: 0 -15px;
+    border-color: #F14A46;
+    color: white;
+}
+
+.submit-button:active,
+.submit-button.active {
+    background-color: #F14A46;
+    border-color: #F14A46;
+}
+
+.button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
