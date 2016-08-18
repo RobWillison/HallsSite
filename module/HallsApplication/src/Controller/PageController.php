@@ -24,10 +24,19 @@ class PageController extends AbstractActionController
     public function getHomePageAction()
     {
         $view = new ViewModel();
-        $view->setTemplate('index');
+        $view->setTemplate('home');
         
         return $view;
     }
+
+    public function getMapPageAction()
+    {
+        $view = new ViewModel();
+        $view->setTemplate('map');
+
+        return $view;
+    }
+
 
     public function getHallProfilePageAction()
     {

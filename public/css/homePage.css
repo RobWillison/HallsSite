@@ -1,0 +1,13 @@
+body {
+    background-color: #6988A0;
+    overflow-x: hidden;
+}
+
+h2 {
+    color: white;
+}
+
+.title-box {
+    margin-top: 10%;
+    text-align: center;
+}

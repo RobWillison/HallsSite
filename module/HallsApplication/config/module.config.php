@@ -18,6 +18,16 @@ return [
                     ],
                 ],
             ],
+            'mapPage' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/map',
+                    'defaults' => [
+                        'controller' => Controller\PageController::class,
+                        'action'     => 'getMapPage',
+                    ],
+                ],
+            ],
             'hallProfile' => [
                 'type' => Segment::class,
                 'options' => [
@@ -145,7 +155,8 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'index' => __DIR__ . '/../view/application/index.phtml',
+            'map' => __DIR__ . '/../view/application/index.phtml',
+            'home' => __DIR__ . '/../view/application/homePage.phtml',
             'hallProfile' => __DIR__ . '/../view/application/hallProfile.phtml',
             'addReview' => __DIR__ . '/../view/application/addReview.phtml',
             'addHall' => __DIR__ . '/../view/application/addHalls.phtml',
