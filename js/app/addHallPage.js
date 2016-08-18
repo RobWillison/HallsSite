@@ -211,7 +211,7 @@ var vue = new Vue({
                 },
                 success: function (data) {
                     waitingDialog.hide();
-                    window.location.href = window.location.href.replace('/review', '');
+                    window.location.href = window.location.href.replace('/', '');
                 }
             })
 
