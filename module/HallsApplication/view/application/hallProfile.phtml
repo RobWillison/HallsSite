@@ -4,7 +4,7 @@
     <h1>{{ hall.hall_name }}</h1>
 
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="hallCarousel carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li v-for="image in hall.images" v-bind:class="{ 'active': $index == 0}" data-target="#myCarousel" data-slide-to="{{ $index }}"></li>
@@ -12,7 +12,7 @@
         </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner hallCarossel" role="listbox">
+        <div class="hallImage carousel-inner" role="listbox">
 
             <div v-for="image in hall.images" v-bind:class="{ 'active': $index == 0}" class="hallImage item">
                 <img src="/img/hallsImages/{{ image }}" class="hallImage">
@@ -43,32 +43,35 @@
     <br/>
     <br/>
     <br/>
+    <div v-if="hall.reviews.length == 0">
+        No Reviews
+    </div>
+    <div v-if="hall.reviews.length != 0">
+        <div class="row ratings">
+            <rating :name="'Location'" :rating="hall.ratings.totalLocation"></rating>
+        </div>
+        <div class="row ratings">
+            <rating :name="'Community'" :rating="hall.ratings.totalCommunity"></rating>
+        </div>
+        <div class="row ratings">
+            <rating :name="'Comfort'" :rating="hall.ratings.totalComfort"></rating>
+        </div>
+        <div class="row ratings">
+            <rating :name="'Value For Money'" :rating="hall.ratings.totalValue"></rating>
+        </div>
+        <div class="row ratings">
+            <rating :name="'Social Space'" :rating="hall.ratings.totalSocialSpace"></rating>
+        </div>
 
-    <div class="row ratings">
-        <rating :name="'Location'" :rating="hall.ratings.totalLocation"></rating>
-    </div>
-    <div class="row ratings">
-        <rating :name="'Community'" :rating="hall.ratings.totalCommunity"></rating>
-    </div>
-    <div class="row ratings">
-        <rating :name="'Comfort'" :rating="hall.ratings.totalComfort"></rating>
-    </div>
-    <div class="row ratings">
-        <rating :name="'Value For Money'" :rating="hall.ratings.totalValue"></rating>
-    </div>
-    <div class="row ratings">
-        <rating :name="'Social Space'" :rating="hall.ratings.totalSocialSpace"></rating>
-    </div>
+        <br/>
+        <br/>
+        <br/>
 
-    <br/>
-    <br/>
-    <br/>
-
-    <div class="reviews">
-        <span> Reviews: </span>
-        <review v-for="review in hall.reviews" :review="review"></review>
+        <div class="reviews">
+            <span> Reviews: </span>
+            <review v-for="review in hall.reviews" :review="review"></review>
+        </div>
     </div>
-    
     <button type="submit"
            class="btn btn-default"
             @click.prevent="addReview"

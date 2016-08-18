@@ -92,5 +92,7 @@ class HallsService
         $hall->setId($id);
 
         $this->hallTable->insert($hall);
+        
+        return $id;
     }
 }

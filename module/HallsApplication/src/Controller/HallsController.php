@@ -95,7 +95,11 @@ class HallsController extends AbstractActionController
         $request = $this->getRequest();
         $hallArray = $request->getPost()->toArray();
         
-        $this->hallsService->addHall($hallArray);
+        $id = $this->hallsService->addHall($hallArray);
+
+        $view = new JsonModel(['id' => $id]);
+
+        return $view;
         
     }
 }
