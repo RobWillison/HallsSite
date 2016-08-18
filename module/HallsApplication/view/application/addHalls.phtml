@@ -12,7 +12,7 @@
     <div v-if="invalidFields.indexOf('images') != -1" class="alert alert-danger" role="alert">Please Add At Least One Image</div>
 
     <div class="row">
-        <div v-bind:class="{ 'has-error': invalidFields.indexOf('selectedUni') != -1}" class="university-drop-down col-sm-4 col-sm-offset-3">
+        <div v-bind:class="{ 'has-error': invalidFields.indexOf('selectedUni') != -1}" class="university-drop-down col-sm-4 col-sm-offset-4">
             <select v-select="selectedUni" class="has-error" id="university-drop-down">
                 <option value="-1">Select University</option>
                 <option v-for="uni in universities" :value="uni.id - 1">{{ uni.name }}</option>
@@ -21,34 +21,37 @@
     </div>
 
     <div class="row">
-        <div v-bind:class="{ 'has-error': invalidFields.indexOf('name') != -1}" class="col-sm-4 col-sm-offset-3 input-group">
+        <div v-bind:class="{ 'has-error': invalidFields.indexOf('name') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="name" type="text" class="textbox form-control" placeholder="Hall of Residence Name" aria-describedby="basic-addon1"/>
         </div>
     </div>
-    <h3>
-        Plase drag the marker to the Halls location:
-    </h3>
+
     <div class="row">
-        <map id="map" :marker.sync="universities[selectedUni]"></map>
+        <div class="col-sm-8 col-sm-offset-1">
+            <h3>
+                Plase drag the marker to the Halls location:
+            </h3>
+            <map id="map" :marker.sync="universities[selectedUni]"></map>
+        </div>
     </div>
 
     <div class="row">
-        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.firstLine') != -1}" class="col-sm-4 col-sm-offset-3 input-group">
+        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.firstLine') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.firstLine" type="text" class="textbox form-control" placeholder="Building Name" aria-describedby="basic-addon1"/>
         </div>
     </div>
     <div class="row">
-        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.secondLine') != -1}" class="col-sm-4 col-sm-offset-3 input-group">
+        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.secondLine') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.secondLine" type="text" class="textbox form-control" placeholder="Road" aria-describedby="basic-addon1"/>
         </div>
     </div>
     <div class="row">
-        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.city') != -1}" class="col-sm-4 col-sm-offset-3 input-group">
+        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.city') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.city" type="text" class="textbox form-control" placeholder="City" aria-describedby="basic-addon1"/>
         </div>
     </div>
     <div class="row">
-        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.postcode') != -1}" class="col-sm-4 col-sm-offset-3 input-group">
+        <div v-bind:class="{ 'has-error': invalidFields.indexOf('address.postcode') != -1}" class="col-sm-4 col-sm-offset-4 input-group">
             <input v-model="address.postcode" type="text" class="textbox form-control" placeholder="PostCode" aria-describedby="basic-addon1"/>
         </div>
     </div>

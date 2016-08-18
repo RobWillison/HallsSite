@@ -1,6 +1,6 @@
 Vue.component('fileupload', {
     template: ' \
-    <button type="button" class="col-sm-2 col-sm-offset-3 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">{{ name }}</button> \
+    <button type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">{{ name }}</button> \
 \
 <!-- Modal --> \
 <div id="myModal" class="modal fade" role="dialog"> \
