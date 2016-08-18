@@ -34,7 +34,7 @@
 
     <div class="row">
         <div class="hall-profile-address">
-            {{ hall.address_first_line }}, {{ hall.address_second_line }}, {{ hall.address_city }}, {{ hall.address_postcode }}
+            {{ hall.address_first_line | uppercase }}, {{ hall.address_second_line | uppercase }}, {{ hall.address_city | uppercase }}, {{ hall.address_postcode | uppercase }}
         </div>
         <div class="hall-profile-uni">
             ({{ hall.university.name }})
@@ -69,7 +69,9 @@
         <br/>
 
         <div class="reviews">
-            <span class="col-xs-offset-2"> Reviews: </span>
+            <div class="margin-bottom">
+                <span class="margin-bottom col-xs-offset-2"> Reviews: </span>
+            </div>
             <review v-for="review in hall.reviews" :review="review"></review>
         </div>
     </div>
