@@ -34,11 +34,11 @@ h2 {
     background-color: #F14A46;
     background-position: 0 -15px;
     border-color: #F14A46;
+    color: white;
 }
 
 .map-button:active,
 .map-button.active {
     background-color: #F14A46;
     border-color: #F14A46;
-    color: #F14A46;
 }
