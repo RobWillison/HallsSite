@@ -36,10 +36,6 @@ Vue.component('map', {
                         ]
                     },
                     {
-                        elementType: 'labels',
-                        stylers: [{visibility: 'off'}]
-                    },
-                    {
                         featureType: 'all',
                         stylers: [{color: '#6887A0'}]
                     },
@@ -50,6 +46,29 @@ Vue.component('map', {
                     {
                         featureType: 'road',
                         stylers: [{color: '#3E4081'}]
+                    },
+                    {
+                        featureType: "all",
+                        elementType: "labels.icon",
+                        stylers: [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        elementType: 'labels.text',
+                        stylers: [
+                            {
+                                visibility: "on"
+                            },
+                            {
+                                color: "#ffffff"
+                            },
+                            {
+                                lightness: 16
+                            }
+                        ]
                     }
                 ], {
                     name: 'Custom Style'
