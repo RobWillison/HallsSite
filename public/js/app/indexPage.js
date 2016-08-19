@@ -1,4 +1,41 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+Vue.directive('select', {
+    twoWay: true,
+    priority: 1000,
+
+    params: ['options'],
+
+    bind: function () {
+        var self = this
+        $(this.el)
+            .select2({
+                ajax: {
+                    url: function (param) {
+                        console.log('/api/search/halls?term=' + param.term)
+                        return '/api/search/halls?term=' + param.term
+                    },
+                    processResults: function (data) {
+
+
+                        var results = data.map(function (item) {
+                            address = item.name + ', ' + item.address_first_line;
+                            return {id: item.id, text: address};
+                        });
+
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+    },
+    update: function (value) {
+        $(this.el).val(value).trigger('change')
+    },
+    unbind: function () {
+        $(this.el).off().select2('destroy')
+    }
+})
 
 Vue.component('map', {
         template: '<div id="map"></div>',

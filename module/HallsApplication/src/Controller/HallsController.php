@@ -102,4 +102,19 @@ class HallsController extends AbstractActionController
         return $view;
         
     }
+    
+    public function searchHallsAction()
+    {
+        $searchTerm = $this->params()->fromQuery('term');
+
+        $result = [];
+
+        if ($searchTerm != '') {
+            $result = $this->hallsService->search($searchTerm);
+        }
+
+        $view = new JsonModel($result);
+
+        return $view;
+    }
 }

@@ -19,7 +19,8 @@
         "zendframework/zend-hydrator": "^2.2",
         "zendframework/zend-filter": "^2.7",
         "zendframework/zend-json": "^3.0",
-        "ramsey/uuid": "^3.5"
+        "ramsey/uuid": "^3.5",
+        "elasticsearch/elasticsearch": "^2.2"
     },
     "autoload": {
         "psr-4": {

@@ -19,6 +19,7 @@ class HallsService
     private $reviewTable;
     private $hydrator;
     private $imageService;
+    private $searchService;
     
 
     public function __construct(
@@ -27,7 +28,8 @@ class HallsService
         UniversityTable $universityTable,
         ReviewTable $reviewTable,
         HydratorInterface $hydrator,
-        ImageService $imageService
+        ImageService $imageService,
+        ElasticSearchService $searchService
     ){
         $this->hallTable = $hallTable;
         $this->hallImageTable = $hallImageTable;
@@ -35,6 +37,7 @@ class HallsService
         $this->reviewTable = $reviewTable;
         $this->hydrator = $hydrator;
         $this->imageService = $imageService;
+        $this->searchService = $searchService;
         
     }
 
@@ -94,5 +97,24 @@ class HallsService
         $this->hallTable->insert($hall);
         
         return $id;
+    }
+    
+    public function search($searchTerm)
+    {
+        $result = $this->searchService->search($searchTerm);
+
+        $numOfResults = $result['hits']['total'];
+
+        if ($numOfResults === 0) {
+            return [];
+        }
+
+        $hits = [];
+        foreach ($result['hits']['hits'] as $hit) {
+            $hits[] = $hit['_source'];
+        }
+
+        return $hits;
+
     }
 }

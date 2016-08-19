@@ -1,7 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 Vue.component('fileupload', {
     template: ' \
-    <button type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">{{ name }}</button> \
+    <button v-if="images.length > 0" type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit Images ({{ images.length }})</button> \
+    <button v-if="images.length == 0" type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Images</button> \
 \
 <!-- Modal --> \
 <div id="myModal" class="modal fade" role="dialog"> \
@@ -28,7 +29,8 @@ Vue.component('fileupload', {
     Browse for File<input @change="onFileChange" type="file" style="display: none;"> \
     </label> \
  \
-    <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button> \
+    <button v-if="images.length > 0" type="button"  class="btn btn-default btn-success" data-dismiss="modal">Upload ({{ images.length }})</button> \
+    <button v-if="images.length == 0" type="button"  class="btn btn-default btn-success" data-dismiss="modal">Close</button> \
     </div> \
     </div> \
     </div> \

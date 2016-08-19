@@ -1,7 +1,13 @@
 
 <div id="app">
 
+
+
     <map id="map" :markers="halls"></map>
+
+    <select v-select="selectedHall" class="hall-search-box" id="hall-search">
+
+    </select>
 
     <?= $this->inlineScript()
         ->prependFile($this->basePath('js/app/indexPage.js'))

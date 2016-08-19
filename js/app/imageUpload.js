@@ -1,6 +1,7 @@
 Vue.component('fileupload', {
     template: ' \
-    <button type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">{{ name }}</button> \
+    <button v-if="images.length > 0" type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit Images ({{ images.length }})</button> \
+    <button v-if="images.length == 0" type="button" class="col-sm-2 col-sm-offset-4 btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Images</button> \
 \
 <!-- Modal --> \
 <div id="myModal" class="modal fade" role="dialog"> \
@@ -27,7 +28,8 @@ Vue.component('fileupload', {
     Browse for File<input @change="onFileChange" type="file" style="display: none;"> \
     </label> \
  \
-    <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button> \
+    <button v-if="images.length > 0" type="button"  class="btn btn-default btn-success" data-dismiss="modal">Upload ({{ images.length }})</button> \
+    <button v-if="images.length == 0" type="button"  class="btn btn-default btn-success" data-dismiss="modal">Close</button> \
     </div> \
     </div> \
     </div> \

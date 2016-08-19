@@ -65,7 +65,16 @@ return [
                 ],
             ],
 
-
+            'searchHalls' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/api/search/halls',
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'searchHalls',
+                    ],
+                ],
+            ],
             'getHalls' => [
                 'type' => Literal::class,
                 'options' => [
@@ -126,8 +135,7 @@ return [
                         'action'     => 'addHalls',
                     ],
                 ],
-            ]
-            
+            ],
         ],
     ],
     'controllers' => [
@@ -145,6 +153,7 @@ return [
             Service\HallsService::class => Factory\Service\HallsServiceFactory::class,
             Service\UniversityService::class => Factory\Service\UniversityServiceFactory::class,
             Service\ImageService::class => Factory\Service\ImageServiceFactory::class,
+            Service\ElasticSearchService::class => Factory\Service\ElasticSearchServiceFactory::class,
         ],
     ],
     'view_manager' => [

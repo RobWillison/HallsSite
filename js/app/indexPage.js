@@ -1,3 +1,40 @@
+Vue.directive('select', {
+    twoWay: true,
+    priority: 1000,
+
+    params: ['options'],
+
+    bind: function () {
+        var self = this
+        $(this.el)
+            .select2({
+                ajax: {
+                    url: function (param) {
+                        console.log('/api/search/halls?term=' + param.term)
+                        return '/api/search/halls?term=' + param.term
+                    },
+                    processResults: function (data) {
+
+
+                        var results = data.map(function (item) {
+                            address = item.name + ', ' + item.address_first_line;
+                            return {id: item.id, text: address};
+                        });
+
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+    },
+    update: function (value) {
+        $(this.el).val(value).trigger('change')
+    },
+    unbind: function () {
+        $(this.el).off().select2('destroy')
+    }
+})
 
 Vue.component('map', {
         template: '<div id="map"></div>',
