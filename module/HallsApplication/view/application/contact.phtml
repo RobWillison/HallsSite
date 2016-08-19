@@ -1,0 +1,26 @@
+<div id="app">
+    <div v-bind:class="{ 'has-error': form.valid.name }" class="row">
+        <div  class="margin-bottom col-xs-4 col-xs-offset-4 input-group">
+            <input v-model="form.name" type="text" class="textbox form-control has-error" placeholder="Your Name" aria-describedby="basic-addon1"/>
+            <span v-if="form.valid.name" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div v-bind:class="{ 'has-error': form.valid.email }" class="margin-bottom row">
+        <div  class="col-xs-4 col-xs-offset-4 input-group">
+            <input v-model="form.email" type="text" class="textbox form-control has-error" placeholder="Your Email" aria-describedby="basic-addon1"/>
+            <span v-if="form.valid.email" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="col-xs-10 col-xs-offset-1 margin-bottom input-group">
+        <textarea v-model="review.text" rows="10" class="form-control" aria-describedby="basic-addon1" placeholder="What do you think?"></textarea>
+    </div>
+    <div class="row">
+        <button @click.prevent="submit" type="button" class="col-xs-2 col-xs-offset-5 btn submit-button btn-lg">Submit</button>
+    </div>
+</div>
+
+<?= $this->inlineScript()
+    ->prependFile($this->basePath('js/app/contactPage.js'))
+?>

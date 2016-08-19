@@ -61,4 +61,12 @@ class PageController extends AbstractActionController
 
         return $view;
     }
+
+    public function contactPageAction()
+    {
+        $view = new ViewModel();
+        $view->setTemplate('contact');
+
+        return $view;
+    }
 }

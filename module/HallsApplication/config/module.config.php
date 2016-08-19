@@ -64,6 +64,16 @@ return [
                     ],
                 ],
             ],
+            'contact' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/contact',
+                    'defaults' => [
+                        'controller' => Controller\PageController::class,
+                        'action'     => 'contactPage',
+                    ],
+                ],
+            ],
 
             'searchHalls' => [
                 'type' => Segment::class,
@@ -170,6 +180,7 @@ return [
             'hallProfile' => __DIR__ . '/../view/application/hallProfile.phtml',
             'addReview' => __DIR__ . '/../view/application/addReview.phtml',
             'addHall' => __DIR__ . '/../view/application/addHalls.phtml',
+            'contact' => __DIR__ . '/../view/application/contact.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
