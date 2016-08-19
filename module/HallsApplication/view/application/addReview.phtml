@@ -7,11 +7,18 @@
 
         </br>
 
-        <form v-bind:class="{ 'has-error': form.nameinvalid }" class="form-horizontal">
-            <div class="row">
-                <div  class="col-sm-4 col-sm-offset-4 input-group">
+        <form  class="form-horizontal">
+            <div v-bind:class="{ 'has-error': form.nameinvalid }" class="row">
+                <div  class="margin-bottom col-sm-4 col-sm-offset-4 input-group">
                     <input v-model="submitter.name" type="text" class="textbox form-control has-error" placeholder="Your Name" aria-describedby="basic-addon1"/>
                     <span v-if="form.nameinvalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                </div>
+            </div>
+
+            <div v-bind:class="{ 'has-error': form.emailinvalid }" class="row">
+                <div  class="col-sm-4 col-sm-offset-4 input-group">
+                    <input v-model="submitter.email" type="text" class="textbox form-control has-error" placeholder="Your Email" aria-describedby="basic-addon1"/>
+                    <span v-if="form.emailinvalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
             </div>
 

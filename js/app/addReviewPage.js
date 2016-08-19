@@ -42,6 +42,7 @@ var vue = new Vue({
         hall: {},
         submitter: {
             name: '',
+            email: '',
             location: 'Unknown Location'
         },
         review: {
@@ -57,6 +58,7 @@ var vue = new Vue({
         },
         form: {
             nameinvalid: false,
+            emailinvalid: false,
         },
         uploadedimages: []
     },
@@ -112,6 +114,7 @@ var vue = new Vue({
                         ratingSocialSpace: this.review.rating.socialspace,
 
                         reviewer: this.submitter.name,
+                        email: this.submitter.email,
                         location: this.submitter.location,
                         uploadedImages: this.uploadedimages,
                 },
@@ -123,12 +126,22 @@ var vue = new Vue({
         },
 
         validateForm: function () {
+            var valid = true;
+
+            this.form.nameinvalid = false;
+            this.form.emailinvalid = false;
+
             if (this.submitter.name == '') {
                 this.form.nameinvalid = true;
-                return false;
+                valid = false;
             }
 
-            return true;
+            if (this.submitter.email == '') {
+                this.form.emailinvalid = true;
+                valid = false;
+            }
+
+            return valid;
         },
 
         getCity: function (position) {

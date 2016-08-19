@@ -16,7 +16,7 @@ class HallsService
     private $hallTable;
     private $hallImageTable;
     private $universityTable;
-    private $reviewTable;
+    private $reviewService;
     private $hydrator;
     private $imageService;
     private $searchService;
@@ -26,7 +26,7 @@ class HallsService
         HallsTable $hallTable,
         HallsImageTable $hallImageTable,
         UniversityTable $universityTable,
-        ReviewTable $reviewTable,
+        ReviewService $reviewService,
         HydratorInterface $hydrator,
         ImageService $imageService,
         ElasticSearchService $searchService
@@ -34,7 +34,7 @@ class HallsService
         $this->hallTable = $hallTable;
         $this->hallImageTable = $hallImageTable;
         $this->universityTable = $universityTable;
-        $this->reviewTable = $reviewTable;
+        $this->reviewService = $reviewService;
         $this->hydrator = $hydrator;
         $this->imageService = $imageService;
         $this->searchService = $searchService;
@@ -56,8 +56,8 @@ class HallsService
 
     public function getHall($id) {
         $images = $this->hallImageTable->fetch($id);
-        $reviews = $this->reviewTable->fetch($id);
-        $totalRating = $this->reviewTable->fetchTotal($id);
+        $reviews = $this->reviewService->getReviews($id);
+        $totalRating = $this->reviewService->getTotal($id);
 
         $hallEntity = $this->hallTable->fetch($id);
         $hallEntity->setImages($images);
@@ -69,16 +69,6 @@ class HallsService
         $hallEntity->setUniversity($universityEntity);
         
         return $this->hydrator->extract($hallEntity);
-    }
-
-    public function addReview($hallId, $reviewArray) {
-        
-        $review = $this->hydrator->hydrate($reviewArray, new ReviewEntity());
-        $review->setHallId($hallId);
-        
-        $result = $this->reviewTable->insert($review);
-
-        return $result;
     }
     
     public function addHall(array $hallArray) {

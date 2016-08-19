@@ -154,6 +154,7 @@ return [
             Service\UniversityService::class => Factory\Service\UniversityServiceFactory::class,
             Service\ImageService::class => Factory\Service\ImageServiceFactory::class,
             Service\ElasticSearchService::class => Factory\Service\ElasticSearchServiceFactory::class,
+            Service\ReviewService::class => Factory\Service\ReviewServiceFactory::class,
         ],
     ],
     'view_manager' => [
@@ -164,7 +165,7 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'map' => __DIR__ . '/../view/application/index.phtml',
+            'map' => __DIR__ . '/../view/application/mapPage.phtml',
             'home' => __DIR__ . '/../view/application/homePage.phtml',
             'hallProfile' => __DIR__ . '/../view/application/hallProfile.phtml',
             'addReview' => __DIR__ . '/../view/application/addReview.phtml',

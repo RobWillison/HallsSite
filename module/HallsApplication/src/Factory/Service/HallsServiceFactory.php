@@ -6,6 +6,7 @@ use HallsApplication\Hydrator\HallHydrator;
 use HallsApplication\Service\ElasticSearchService;
 use HallsApplication\Service\HallsService;
 use HallsApplication\Service\ImageService;
+use HallsApplication\Service\ReviewService;
 use HallsApplication\Table\HallsImageTable;
 use HallsApplication\Table\HallsTable;
 use HallsApplication\Table\ReviewTable;
@@ -21,11 +22,11 @@ class HallsServiceFactory implements FactoryInterface {
         $hallTable = $container->get(HallsTable::class);
         $hallImageTable = $container->get(HallsImageTable::class);
         $universityTable = $container->get(UniversityTable::class);
-        $reviewTable = $container->get(ReviewTable::class);
+        $reviewService = $container->get(ReviewService::class);
         $hydrator = new HallHydrator();
         $imageService = $container->get(ImageService::class);
         $searchService = $container->get(ElasticSearchService::class);
 
-        return new HallsService($hallTable, $hallImageTable, $universityTable, $reviewTable, $hydrator, $imageService, $searchService);
+        return new HallsService($hallTable, $hallImageTable, $universityTable, $reviewService, $hydrator, $imageService, $searchService);
     }
 }
