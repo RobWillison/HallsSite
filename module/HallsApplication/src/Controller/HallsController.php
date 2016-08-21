@@ -117,4 +117,12 @@ class HallsController extends AbstractActionController
 
         return $view;
     }
+
+    public function contactAction()
+    {
+        $request = $this->getRequest();
+        $contact = $request->getPost()->toArray();
+
+        var_dump($contact);die;
+    }
 }

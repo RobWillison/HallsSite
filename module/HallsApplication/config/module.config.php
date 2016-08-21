@@ -146,6 +146,16 @@ return [
                     ],
                 ],
             ],
+            'addHalls' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/api/contact',
+                    'defaults' => [
+                        'controller' => Controller\HallsController::class,
+                        'action'     => 'contact',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [

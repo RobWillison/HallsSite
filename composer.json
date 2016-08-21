@@ -20,7 +20,8 @@
         "zendframework/zend-filter": "^2.7",
         "zendframework/zend-json": "^3.0",
         "ramsey/uuid": "^3.5",
-        "elasticsearch/elasticsearch": "^2.2"
+        "elasticsearch/elasticsearch": "^2.2",
+        "PHPMailer/PHPMailer": "^5.2"
     },
     "autoload": {
         "psr-4": {

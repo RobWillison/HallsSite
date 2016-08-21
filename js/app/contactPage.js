@@ -25,6 +25,12 @@ var vue = new Vue({
                 dataType: "json",
                 url: 'api/contact',
                 context: this,
+                method: 'POST',
+                data: {
+                    email: this.form.email,
+                    name: this.form.name,
+                    message: this.form.message
+                },
                 success: function (data) {
                     this.halls = data
                 }
